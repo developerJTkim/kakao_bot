@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, (error,res,body) => {
+  }, (error,response,body) => {
     (error) ? console.log({error}) : res.json(body)
   })
 })
@@ -26,7 +26,7 @@ router.get('/:date', (req,res) =>{
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, (error,res,body) => {
+  }, (error,response,body) => {
     (error) ? console.log({error}) : res.json(body)
   })
 })
@@ -39,7 +39,7 @@ router.get('/between/', (req,res) =>{
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, (error,res,body) => {
+  }, (error,response,body) => {
     (error) ? console.log({error}) : res.json(body)
   })
 })
