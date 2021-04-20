@@ -38,6 +38,8 @@ nodemon app.js
 ## api
 | URL | header | params | description |
 |---|:---:|---:|---:|
-| `http://54.180.24.47:3000/coin/price/:coin` | `get` | `` | `{coin} 코인 시세 조회` |
+| `http://54.180.24.47:3000/cc/price/:coin` | `get` | `BTC` | `cc 거래소 {coin} 코인 시세 조회 ex)BTC,DOGE,ETH` |
+| `http://54.180.24.47:3000/price/:coin` | `get` | `BTC` | `upbit 거래소 {coin} 코인 시세 조회 ex)BTC,DOGE,ETH` |
+| `http://54.180.24.47:3000/price/list` | `get` | `` | `upbit 거래소 취급 코인 시세 조회` |
 | `http://54.180.24.47:3000/msg/` | `get`,`post` | `` | `request data 테스트` |
 | `http://54.180.24.47:3000/weather/` | `get`,`post` | `` | `날씨 조회` |
