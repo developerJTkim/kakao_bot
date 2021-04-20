@@ -20,13 +20,11 @@ router.get('/cc/price/:coin', (req, res) => {
     res.json(error)
     // data = error
   }
-
-  // res.json(data)
 })
 
 router.get('/list', (req,res) =>{
   const options = { method : 'GET' , url : 'https://api.upbit.com/v1/market/all' }
-  
+
   request(options, function (error, response, body) {
     res.send(body)
     // console.log(body)

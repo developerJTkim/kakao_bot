@@ -3,10 +3,12 @@ const app = express()
 const msgRouter = require('./routes/msg')
 const coinRouter = require('./routes/coin')
 const weatherRouter = require('./routes/weather')
+const covidRouter = require('./routes/covid19')
 
 app.use('/msg',msgRouter)
 app.use('/coin',coinRouter)
 app.use('/weather',weatherRouter)
+app.use('/covid',covidRouter)
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
