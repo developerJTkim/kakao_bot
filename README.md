@@ -20,6 +20,8 @@ sudo npm install -g npm
 npm init -y
 npm i -g express
 npm i -g nodemon
+npm i -g --save cryptocompare
+npm i -g --save node-fetch
 ```
 
 > <b>nodemon</b>은 <b>node monitor</b>의 약자로,
@@ -36,6 +38,6 @@ nodemon app.js
 ## api
 | URL | header | params | description |
 |---|:---:|---:|---:|
-| `http://54.180.24.47:3000/coin/` | `get`,`post` | `` | `코인 시세 조회` |
+| `http://54.180.24.47:3000/coin/price/:coin` | `get` | `` | `{coin} 코인 시세 조회` |
 | `http://54.180.24.47:3000/msg/` | `get`,`post` | `` | `request data 테스트` |
 | `http://54.180.24.47:3000/weather/` | `get`,`post` | `` | `날씨 조회` |
