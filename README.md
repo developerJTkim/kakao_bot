@@ -18,12 +18,13 @@ sudo npm install -g npm
 ## 라이브러리 설치&셋팅
 ```bash
 npm init -y
-npm i -g --save express
-npm i -g --save nodemon
-npm i -g --save cryptocompare
-npm i -g --save node-fetch
-npm i -g --save request
-npm i -g --save moment
+npm i express --save
+npm i nodemon --save
+npm i cryptocompare --save
+npm i node-fetch --save
+npm i request --save
+npm i moment --save
+npm i ejs --save
 ```
 
 > <b>nodemon</b>은 <b>node monitor</b>의 약자로,

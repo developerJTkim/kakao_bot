@@ -1,0 +1,2 @@
+lsof -nP -iTCP:3000 | grep LISTEN
+kill pid
