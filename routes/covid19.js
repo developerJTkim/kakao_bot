@@ -5,6 +5,8 @@ const serviceUrl = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCo
 const serviceKey = decodeURI("QPxX2Vxt908Py5YwVLkoZyh%2BJApMY2qHKIHtr3lFoJE9rzGhBbNgFEbH97l7ubCcWG2wD3LqcksTZ03Fzzt4EA%3D%3D")
 
 const moment = require('moment')
+const xmlConvert = require('xml-js')
+
 let query = `?${encodeURIComponent('ServiceKey')}=${serviceKey}&${encodeURIComponent('pageNo')}=${encodeURIComponent('1')}&${encodeURIComponent('numOfRows')}=${encodeURIComponent('10')}`
 
 //week ~ today
@@ -20,7 +22,7 @@ router.get('/', (req, res) => {
     (error) ? console.log({error}) :
       res.render('covid',{ title : 'covid-19 week', data : body }, (err, html) =>{
         err ? console.log(err) :
-          res.end(xmlConvert.xml2json(body, {compact:true , spaces: 4}))
+          res.end(xmlConvert.xml2json(body, {spaces: 4}))
       })
   })
 })

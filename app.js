@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const xmlConvert = require('xml-js')
 
 const port = 3000
 const msgRouter = require('./routes/msg')
