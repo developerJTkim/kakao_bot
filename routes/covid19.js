@@ -7,15 +7,21 @@ const serviceKey = decodeURI("QPxX2Vxt908Py5YwVLkoZyh%2BJApMY2qHKIHtr3lFoJE9rzGh
 const moment = require('moment')
 let query = `?${encodeURIComponent('ServiceKey')}=${serviceKey}&${encodeURIComponent('pageNo')}=${encodeURIComponent('1')}&${encodeURIComponent('numOfRows')}=${encodeURIComponent('10')}`
 
-//today
+//week ~ today
 router.get('/', (req, res) => {
-  query += `&${encodeURIComponent('startCreateDt')}=${encodeURIComponent(moment(new Date()).format('YYYYMMDD'))}`
+  query += `&${encodeURIComponent('startCreateDt')}=${encodeURIComponent(moment(new Date()).add(-7,'days').format('YYYYMMDD'))}`
   query += `&${encodeURIComponent('endCreateDt')}=${encodeURIComponent(moment(new Date()).format('YYYYMMDD'))}`
+  res.writeHead(200, {"Content-Type":"text/html;charset=utf8"})
+
   request({
     url : serviceUrl + query,
     method : 'GET'
   }, (error,response,body) => {
-    (error) ? console.log({error}) : res.json(body)
+    (error) ? console.log({error}) :
+      res.render('covid',{ title : 'covid-19 week', data : body }, (err, html) =>{
+        err ? console.log(err) :
+          res.end(xmlConvert.xml2json(body, {compact:true , spaces: 4}))
+      })
   })
 })
 
