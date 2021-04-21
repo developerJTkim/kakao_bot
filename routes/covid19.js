@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, function (error,response,body){
+  }, (error,response,body) => {
     (error) ? console.log({error}) : res.json(body)
   })
 })
