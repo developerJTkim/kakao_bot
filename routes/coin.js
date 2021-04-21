@@ -26,7 +26,7 @@ router.get('/list', (req,res) =>{
   const options = { method : 'GET' , url : 'https://api.upbit.com/v1/market/all' }
 
   request(options, function (error, response, body) {
-    res.send(body)
+    res.send(JSON.stringify(body,null, 4))
     // console.log(body)
   })
 })

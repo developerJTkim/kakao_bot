@@ -2,18 +2,19 @@ const express = require('express')
 const router = express.Router()
 const request = require("request")
 const serviceUrl = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson"
-const serviceKey = "qVLlVvSVCyWu9cUjja9wkUwtsYBlrRMQzh4rOGEkEK3Jp4SNtkuV4UOYmW3C47Qv3zFmk9FSgdLZeaFXqsJ0Jw%3D%3D"
+const serviceKey = decodeURI("QPxX2Vxt908Py5YwVLkoZyh%2BJApMY2qHKIHtr3lFoJE9rzGhBbNgFEbH97l7ubCcWG2wD3LqcksTZ03Fzzt4EA%3D%3D")
+
+const moment = require('moment')
 let query = `?${encodeURIComponent('ServiceKey')}=${serviceKey}&${encodeURIComponent('pageNo')}=${encodeURIComponent('1')}&${encodeURIComponent('numOfRows')}=${encodeURIComponent('10')}`
 
 //today
 router.get('/', (req, res) => {
-  query += `&${encodeURIComponent('startCreateDt')}=${encodeURIComponent('20210420')}`
-  query += `&${encodeURIComponent('endCreateDt')}=${encodeURIComponent('20210420')}`
-
+  query += `&${encodeURIComponent('startCreateDt')}=${encodeURIComponent(moment(new Date()).format('YYYYMMDD'))}`
+  query += `&${encodeURIComponent('endCreateDt')}=${encodeURIComponent(moment(new Date()).format('YYYYMMDD'))}`
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, (error,res,body) => {
+  }, function (error,response,body){
     (error) ? console.log({error}) : res.json(body)
   })
 })
@@ -26,7 +27,7 @@ router.get('/:date', (req,res) =>{
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, (error,res,body) => {
+  }, (error,response,body) => {
     (error) ? console.log({error}) : res.json(body)
   })
 })
@@ -39,7 +40,7 @@ router.get('/between/', (req,res) =>{
   request({
     url : serviceUrl + query,
     method : 'GET'
-  }, (error,res,body) => {
+  }, (error,response,body) => {
     (error) ? console.log({error}) : res.json(body)
   })
 })
