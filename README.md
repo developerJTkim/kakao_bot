@@ -41,10 +41,10 @@ nodemon app.js
 ## api
 | URL | header | params | description |
 |---|:---:|---:|---:|
-| `http://54.180.24.47:3000/cc/price/:coin` | `get` | `BTC` | `cc 거래소 {coin} 코인 시세 조회 ex)BTC,DOGE,ETH` |
-| `http://54.180.24.47:3000/price/:coin` | `get` | `BTC` | `upbit 거래소 {coin} 코인 시세 조회 ex)BTC,DOGE,ETH` |
-| `http://54.180.24.47:3000/covid/` | `get` | `` | `오늘 날짜 코로나 확진자 조회` |
-| `http://54.180.24.47:3000/covid/:YYYYMMDD` | `get` | `YYYYMMDD` | `해당 날짜 코로나 확진자 조회` |
-| `http://54.180.24.47:3000/covid/between?startDate=YYYYMMDD&endDate=YYYYMMDD` | `get` | `YYYYMMDD` | `시작일부터 종료일까지 코로나 확진자 조회` |
-| `http://54.180.24.47:3000/msg/` | `get`,`post` | `` | `request data 테스트` |
-| `http://54.180.24.47:3000/weather/` | `get`,`post` | `` | `날씨 조회` |
+| `http://54.180.24.47:3000/api/cc/price/:coin` | `get` | `BTC` | `cc 거래소 {coin} 코인 시세 조회 ex)BTC,DOGE,ETH` |
+| `http://54.180.24.47:3000/api/price/:coin` | `get` | `BTC` | `upbit 거래소 {coin} 코인 시세 조회 ex)BTC,DOGE,ETH` |
+| `http://54.180.24.47:3000/api/covid/` | `get` | `` | `오늘 날짜 코로나 확진자 조회` |
+| `http://54.180.24.47:3000/api/covid/:YYYYMMDD` | `get` | `YYYYMMDD` | `해당 날짜 코로나 확진자 조회` |
+| `http://54.180.24.47:3000/api/covid/between?startDate=YYYYMMDD&endDate=YYYYMMDD` | `get` | `YYYYMMDD` | `시작일부터 종료일까지 코로나 확진자 조회` |
+| `http://54.180.24.47:3000/api/msg/` | `get`,`post` | `` | `request data 테스트` |
+| `http://54.180.24.47:3000/api/weather/` | `get`,`post` | `` | `날씨 조회` |

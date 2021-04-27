@@ -24,9 +24,9 @@ app.get('/', (req, res) => {
   })
 })
 
-app.use('/msg',msgRouter)
-app.use('/coin',coinRouter)
-app.use('/weather',weatherRouter)
-app.use('/covid',covidRouter)
+app.use('/api/msg',msgRouter)
+app.use('/api/coin',coinRouter)
+app.use('/api/weather',weatherRouter)
+app.use('/api/covid',covidRouter)
 
 app.listen(port, () => console.log('node on 3000'))

@@ -22,13 +22,9 @@ router.get('/', (req, res) => {
     if(error){ console.log({error}) }
     else{
       let resData = JSON.parse(xmlConvert.xml2json(body,{compact:true}))
-//      res.json(JSON.parse(resData).response.body.items.item)
-
       res.render('covid',{ title : 'covid-19 week', dataItem : resData.response.body.items.item }, (err, html) =>{
         err ? console.log(err) :
           res.end(html)
-	  //res.end(xmlConvert.xml2json(body,{compact:true}))
-          //res.end(xmlConvert.xml2json(body, {spaces: 4}))
       })
 
     }
