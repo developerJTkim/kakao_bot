@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <title><%= title %></title>
 </head>
@@ -18,18 +18,33 @@
         <th>누적 검사 완료 수</th>
         <th>누적 환진률</th>
     </tr>
+    <% for (let data of dataItem) {%>
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><%= data.stateDt._text %></td>
+        <td><%= data.stateTime._text %></td>
+        <td><%= data.decideCnt._text %></td>
+        <td><%= data.clearCnt._text %></td>
+        <td><%= data.examCnt._text %></td>
+        <td><%= data.careCnt._text %></td>
+        <td><%= data.deathCnt._text %></td>
+        <td><%= data.resutlNegCnt._text %></td>
+        <td><%= data.accExamCnt._text %></td>
+        <td><%= data.accExamCompCnt._text %></td>
+        <td><%= data.accDefRate._text %></td>
     </tr>
+    <% } %>
 </table>
 </body>
+<style>
+  table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+</style>
 </html>
+

@@ -11,7 +11,7 @@ router.get('/cc/price/:coin', (req, res) => {
   try {
     global.fetch = require('node-fetch')
     const cc = require('cryptocompare')
-    cc.setApiKey('943cc2a6e41fc81eb72a3301aca3a387638782626255f068e540846c9eaebb24')
+    cc.setApiKey(process.env.COIN_CC_API_KEY)
 
     cc.price(req.params.coin,['KR','USD']).then(res2=>{
       res.json(res2)
@@ -23,7 +23,7 @@ router.get('/cc/price/:coin', (req, res) => {
 })
 
 router.get('/list', (req,res) =>{
-  const options = { method : 'GET' , url : 'https://api.upbit.com/v1/market/all' }
+  const options = { method : 'GET' , url : `${COIN_UPBIT_API_URL}/market/all` }
 
   request(options, function (error, response, body) {
     res.send(JSON.stringify(body,null, 4))
@@ -32,7 +32,7 @@ router.get('/list', (req,res) =>{
 })
 
 router.get('/price/:coin', (req,res) =>{
-  const options = { method : 'GET' , url : `https://api.upbit.com/v1/trades/ticks?market=KRW-${req.params.coin}&count=1` }
+  const options = { method : 'GET' , url : `${COIN_UPBIT_API_URL}/trades/ticks?market=KRW-${req.params.coin}&count=1` }
 
   request(options, function (error, response, body) {
     res.send(JSON.stringify(body))

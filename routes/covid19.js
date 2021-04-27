@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const request = require("request")
-const serviceUrl = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson"
-const serviceKey = decodeURI("QPxX2Vxt908Py5YwVLkoZyh%2BJApMY2qHKIHtr3lFoJE9rzGhBbNgFEbH97l7ubCcWG2wD3LqcksTZ03Fzzt4EA%3D%3D")
+const serviceUrl = process.env.COVID_API_URL
+const serviceKey = decodeURI(process.env.COVID_API_KEY)
 
 const moment = require('moment')
 const xmlConvert = require('xml-js')
@@ -19,11 +19,19 @@ router.get('/', (req, res) => {
     url : serviceUrl + query,
     method : 'GET'
   }, (error,response,body) => {
-    (error) ? console.log({error}) :
-      res.render('covid',{ title : 'covid-19 week', data : body }, (err, html) =>{
+    if(error){ console.log({error}) }
+    else{
+      let resData = JSON.parse(xmlConvert.xml2json(body,{compact:true}))
+//      res.json(JSON.parse(resData).response.body.items.item)
+
+      res.render('covid',{ title : 'covid-19 week', dataItem : resData.response.body.items.item }, (err, html) =>{
         err ? console.log(err) :
-          res.end(xmlConvert.xml2json(body, {spaces: 4}))
+          res.end(html)
+	  //res.end(xmlConvert.xml2json(body,{compact:true}))
+          //res.end(xmlConvert.xml2json(body, {spaces: 4}))
       })
+
+    }
   })
 })
 
