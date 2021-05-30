@@ -1,24 +1,21 @@
 const express = require('express')
 const router = express.Router()
+const commonFunctions = require('../../lib/common.js')
 
 router.get('/', (req, res) => {
-  res.send('msg index page')
-})
-
-router.get('/:msg', (req, res) => {
-  res.send(`req params : ${req.params.msg}`)
+  res.send('lotto index page')
 })
 
 router.post('/', (req, res) => {
   const question = req.body.userRequest.utterance
+  let answer = commonFunctions.lotto()
   const responseBody = {
     version: "2.0",
     template: {
       outputs: [
         {
           simpleText: {
-            text: question ? question : "정해진 키워드가 아닙니다."
-            // text : 'hello!'
+            text: answer  ? answer : "정해진 키워드가 아닙니다."
           }
         }
       ]
@@ -27,4 +24,5 @@ router.post('/', (req, res) => {
 
   res.status(200).send(responseBody);
 });
+
 module.exports = router;
